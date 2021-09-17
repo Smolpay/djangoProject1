@@ -1,0 +1,59 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <div class="uk-container-expand">
+
+        <h1  class="uk-heading-divider">Таблица паролей</h1>
+<button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-nav-primary">Навигация</button>
+
+<div id="offcanvas-nav-primary" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar uk-flex uk-flex-column">
+
+        <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
+            <li class="uk-active"><a href="{% url 'login' %}"><span uk-icon="users"></span>Страница входа пользователя</a></li>
+            <li class="uk-parent">
+                <a href="../admin/"><span uk-icon="user"></span>Страница входа администратора</a>
+                <a href="{% url 'logout' %}"><span uk-icon="sign-out"></span>Выход из приложения</a>
+                <ul class="uk-nav-sub">
+
+        </div>
+    </div>
+
+
+</div>
+    </div>
+    <div class="uk-container-expand">
+    <div class="uk-margin-top">
+
+    <table class="uk-table uk-table-hover">
+    <thead>
+
+        <tr>
+            <th>Кто добавил</th>
+            <th>Для чего пароль</th>
+            <th>Пароль</th>
+            <th>Описание</th>
+            <th>Дата создания</th>
+            <th>Дата публикации</th>
+        </tr>
+    </thead>
+
+             {% for TableKey in TableKey %}
+    <tbody>
+        <tr>
+
+            <td>{{ TableKey.name }}</td>
+            <td>{{ TableKey.forWhat}}</td>
+            <td>{{ TableKey.password}}</td>
+            <td>{{ TableKey.specification }}</td>
+            <td>{{ TableKey.created_date }}</td>
+            <td>{{ TableKey.published_date }}</td>
+            <td><a href="edit/{{TableKey.id}}">Изменить</a> | <a href="delete/{{TableKey.id}}">Удалить</a></td>
+
+        </tr>
+    </tbody>
+        {% endfor %}
+    <a class="uk-button uk-button-default" href="{% url 'user_create' %}" >Добавить</a>
+</table>
+
+{% endblock %}

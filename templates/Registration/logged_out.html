@@ -1,0 +1,25 @@
+{% load static %}
+        <link rel="stylesheet" href="../../static/uikit/dist/css/uikit.min.css" />
+        <script src="../../static/uikit/dist/js/uikit.min.js"></script>
+        <script src="../../static/uikit/dist/js/uikit-icons.min.js"></script>
+
+{% block content %}
+
+
+
+<div class="uk-container-expand">
+<div class="uk-position-top-center">
+    <h1 class="uk-heading-divider">Вы вышли из приложения</h1>
+
+
+
+
+      <div class="uk-margin-large">
+          <h3><a class="uk-link-reset" href="{% url 'login'%}">Нажмите, чтобы зайти снова</a></h3>
+
+</div>
+</div>
+</div>
+
+
+{% endblock %}

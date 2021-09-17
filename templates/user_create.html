@@ -1,0 +1,42 @@
+{% extends "base_generic.html" %}
+{% block title %}<title>user_create</title>{% endblock %}
+{% block content %}
+    <div class="uk-container">
+    <h1 class="uk-heading-divider">Добавление пароля</h1>
+
+<form class="uk-form-horizontal uk-margin-large" method="POST" action= "user_create">
+    {% csrf_token %}
+
+    <div class="uk-margin">
+        <label class="uk-form-label" for="form-horizontal-text">Кто добавил</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="form-horizontal-text" type="text" name="name" placeholder="Какое-то имя...">
+        </div>
+    </div>
+
+    <div class="uk-margin">
+        <label class="uk-form-label" for="form-horizontal-text">Для чего пароль</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="form-horizontal-text" type="text" name="forWhat" placeholder="Какой-то текст...">
+        </div>
+    </div>
+
+    <div class="uk-margin">
+        <label class="uk-form-label" for="form-horizontal-text">Пароль</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="form-horizontal-text" type="text" name="password" placeholder="Какой-то текст...">
+        </div>
+    </div>
+
+    <div class="uk-margin">
+        <label class="uk-form-label" for="form-horizontal-text">Описание</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="form-horizontal-text" type="text" name="specification" placeholder="Какой-то текст...">
+        </div>
+    </div>
+
+<input  class="uk-button uk-button-default" type="submit" value="Сохранить" >
+   <a class="uk-button uk-button-default" href="{% url 'index' %}">На главную</a>
+</form>
+    </div>
+{% endblock %}

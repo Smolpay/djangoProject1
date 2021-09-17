@@ -1,0 +1,49 @@
+{% load static %}
+        <link rel="stylesheet" href="../../static/uikit/dist/css/uikit.min.css" />
+        <script src="../../static/uikit/dist/js/uikit.min.js"></script>
+        <script src="../../static/uikit/dist/js/uikit-icons.min.js"></script>
+{% block content %}
+
+
+
+    <div data-uk-img="" class="uk-flex uk-flex-center uk-flex-middle uk-background-cover" uk-height-viewport>
+
+            <div class="uk-overlay-primary uk-position-cover"></div>
+
+            <div class="uk-overlay uk-position-center uk-light">
+
+      <form method="post" action="{% url 'login' %}">
+          {% csrf_token %}
+
+                    <div class="uk-margin">
+
+                        <div class="uk-inline">
+
+                            <span class="uk-form-icon" uk-icon="icon: user"></span>
+                            <input class="uk-input" type="text" placeholder="Логин" id="id_username" maxlength="254" name="username" type="text">
+                        </div>
+
+                    </div>
+
+                    <div class="uk-margin">
+
+                        <div class="uk-inline">
+
+                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                            <input class="uk-input" type="text" placeholder="Пароль" id="id_password" name="password" type="password">
+                        </div>
+
+                    </div>
+
+                    <div class="uk-margin">
+                        <input type="hidden" name="next" value="/" />
+                        <input type="submit" class="uk-button uk-button-default" value= "Войти" />
+
+
+                    </div>
+
+      </form>
+             </div>
+
+           </div>
+{% endblock %}

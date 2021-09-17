@@ -1,0 +1,46 @@
+{% load static %}
+        <link rel="stylesheet" href="/static/uikit/dist/css/uikit.min.css" />
+        <script src="/static/uikit/dist/js/uikit.min.js"></script>
+        <script src="/static/uikit/dist/js/uikit-icons.min.js"></script>
+
+{% block title %}<title>edit</title>{% endblock %}
+{% block content %}
+    <div class="uk-container">
+    <h1 class="uk-heading-divider">Изменение информации</h1>
+
+<form class="uk-form-horizontal uk-margin-large" method="POST" >
+    {% csrf_token %}
+
+    <div class="uk-margin">
+        <label class="uk-form-label" for="form-horizontal-text">редактировать поле "кто добавил"</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="form-horizontal-text" type="text" name="name" value="{{TableKey.name}}" placeholder="Какое-то имя...">
+        </div>
+    </div>
+
+    <div class="uk-margin">
+        <label class="uk-form-label" for="form-horizontal-text">редактировать поле "для чего"</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="form-horizontal-text" type="text" name="forWhat" {{TableKey.forWhat}} placeholder="Какой-то текст...">
+        </div>
+    </div>
+
+    <div class="uk-margin">
+        <label class="uk-form-label" for="form-horizontal-text">редактировать поле "пароль"</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="form-horizontal-text" type="text" name="password" value="{{TableKey.password}}" placeholder="Какой-то текст...">
+        </div>
+    </div>
+
+    <div class="uk-margin">
+        <label class="uk-form-label" for="form-horizontal-text">редактировать поле "описание"</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="form-horizontal-text" type="text" name="specification" value="{{TableKey.specification}}" placeholder="Какой-то текст...">
+        </div>
+    </div>
+
+<input  class="uk-button uk-button-default" type="submit" value="Сохранить" >
+   <a class="uk-button uk-button-default" href="{% url 'index' %}">На главную</a>
+</form>
+    </div>
+{% endblock %}
