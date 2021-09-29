@@ -1,5 +1,7 @@
 {% extends "base_generic.html" %}
 
+
+
 {% block content %}
     <div class="uk-container-expand">
 
@@ -38,7 +40,8 @@
         </tr>
     </thead>
 
-             {% for TableKey in TableKey %}
+
+            {% for TableKey in TableKey %}
     <tbody>
         <tr>
 
@@ -52,7 +55,9 @@
 
         </tr>
     </tbody>
+
         {% endfor %}
+
     <a class="uk-button uk-button-default" href="{% url 'user_create' %}" >Добавить</a>
 </table>
 
