@@ -1,1 +1,8 @@
 /secrets.py
+*.pyc
+*~
+__pycache__
+venv
+db.postgresql
+/static
+.DS_Store
