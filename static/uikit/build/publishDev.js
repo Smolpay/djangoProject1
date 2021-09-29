@@ -19,7 +19,7 @@ if (isDevCommit() || argv.f || argv.force) {
     // get current git hash
     const hash = execSync('git rev-parse --short HEAD', options).trim();
 
-    // set version of package.json
+    // set version of secret.json
     execSync(`npm version ${version}-dev.${hash} --git-tag-version false`, {...options, stdio: 'inherit'});
 
     // create dist files
