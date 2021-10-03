@@ -7,34 +7,29 @@ from django.http import HttpResponseNotFound
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required
 
+ # Функция на ошибку 404
+def error404(request):
+    username = request.user
+
+    for a in Group.objects.all():
+        users_in_group = Group.objects.get(name=a.name).user_set.all()
+        if username not in users_in_group:
+            return render(request, "error404.html")
 
 # Запрет на анонимных пользователей - обязательная аутентификация декоратором
 @login_required(login_url="login")
 # Получение данных из БД всех пользователей группы,залогиненого пользователя
 def index(request):
     username = request.user
-    users_in_group_1 = Group.objects.get(name="Group_1").user_set.all()
-    users_in_group_2 = Group.objects.get(name="Group_2").user_set.all()
-    users_in_group_admin = Group.objects.get(name="admin").user_set.all()
 
-    if username in users_in_group_1:
-
-        queryset = TableKey.objects.filter(name__in=users_in_group_1)
-        context = {'TableKey': queryset}
-        return render(request, "index.html", context)
-    elif username in users_in_group_2:
-
-        queryset = TableKey.objects.filter(name__in=users_in_group_2)
-        context = {'TableKey': queryset}
-        return render(request, "index.html", context)
-
-    elif username in users_in_group_admin:
-
-        queryset = TableKey.objects.all()
-        context = {'TableKey': queryset}
-        return render(request, "index.html", context)
+    for a in Group.objects.all():
+        users_in_group = Group.objects.get(name=a.name).user_set.all()
+        if username in users_in_group:
+            if username.__str__() == "admin":
+                return render(request, "index.html", {'TableKey': TableKey.objects.all()})
+            return render(request, "index.html", {'TableKey': TableKey.objects.filter(name__in=users_in_group)})
     else:
-         return HttpResponseNotFound("<h2>Password not found</h2>")
+        return HttpResponseRedirect("error404")
 
     # Сохранение данных в БД пользователем
 def user_create(request):
