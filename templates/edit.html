@@ -12,13 +12,6 @@
     {% csrf_token %}
 
     <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-text">редактировать поле "кто добавил"</label>
-        <div class="uk-form-controls">
-            <input class="uk-input" id="form-horizontal-text" type="text" name="name" value="{{TableKey.name}}" placeholder="Какое-то имя...">
-        </div>
-    </div>
-
-    <div class="uk-margin">
         <label class="uk-form-label" for="form-horizontal-text">редактировать поле "для чего"</label>
         <div class="uk-form-controls">
             <input class="uk-input" id="form-horizontal-text" type="text" name="forWhat" {{TableKey.forWhat}} placeholder="Какой-то текст...">

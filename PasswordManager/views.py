@@ -34,13 +34,9 @@ def index(request):
     # Сохранение данных в БД пользователем
 def user_create(request):
     if request.method == "POST":
-        tablekey = TableKey()
-        tablekey.name = User.objects.get(username=request.POST.get("name"))
-        tablekey.forWhat = request.POST.get("forWhat")
-        tablekey.password = request.POST.get("password")
-        tablekey.specification = request.POST.get("specification")
-        tablekey.published_date = request.POST.get("published_date")
-        tablekey.save()
+        TableKey.objects.get_or_create(name=request.user, forWhat=request.POST.get("forWhat"),
+                                       password=request.POST.get("password"),specification=request.POST.get("specification"),
+                                       published_date=request.POST.get("published_date"))
 
     return render(request, "user_create.html")
 
@@ -51,7 +47,7 @@ def edit(request, id):
         tablekey = TableKey.objects.get(id=id)
 
         if request.method == "POST":
-            tablekey.name = User.objects.get(username=request.POST.get("name"))
+            tablekey.name = User.objects.get(username=request.user)
             tablekey.forWhat = request.POST.get("forWhat")
             tablekey.password = request.POST.get("password")
             tablekey.specification = request.POST.get("specification")
