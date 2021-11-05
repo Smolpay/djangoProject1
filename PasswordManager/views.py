@@ -6,6 +6,22 @@ from .models import TableKey
 from django.http import HttpResponseNotFound
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required
+from cryptography.fernet import Fernet
+
+class Crypto:
+
+        def create_key(self):
+          key = Fernet.generate_key()
+
+        def encrypt(data,key):
+          f = Fernet(key)
+          f.encrypt(b"")
+          return f.encrypt(b"")
+
+        def decrypt(data,key):
+          f = Fernet(key)
+          f.decrypt(f.encrypt(b""))
+          return f.decrypt(f.encrypt(b""))
 
  # Функция на ошибку 404
 def error404(request):
@@ -68,3 +84,4 @@ def delete(request, id):
         return HttpResponseRedirect("/")
     except TableKey.DoesNotExist:
         return HttpResponseNotFound("<h2>Password not found</h2>")
+
