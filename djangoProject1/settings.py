@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 from secrets import *
 from pathlib import Path
-
+import os
 
 
 
@@ -59,7 +59,7 @@ ROOT_URLCONF = 'djangoProject1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
+        'DIRS': [os.path.join(BASE_DIR / './templates')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -78,14 +78,14 @@ WSGI_APPLICATION = 'djangoProject1.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
+#'DBPassword_Manager','UserPasswordManager', 'Qwerty',
 DATABASES = {
 'default': {
 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-'NAME': 'DBPassword_Manager',
-'USER': 'UserPasswordManager',
-'PASSWORD': 'Qwerty',
-'HOST': 'localhost',
+'NAME': os.environ.get('DB_NAME'),
+'USER': os.environ.get('DB_USER'),
+'PASSWORD': os.environ.get('DB_PASSWORD'),
+'HOST': os.environ.get('DB_HOST'),
 'PORT': '5432'
 }
 }

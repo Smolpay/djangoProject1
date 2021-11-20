@@ -1,8 +1,5 @@
 from django.urls import path
 from . import views
-from django.conf.urls import url
-from django.urls import include
-from django.conf.urls import handler404
 
 
 
@@ -12,7 +9,7 @@ urlpatterns = [
     path('edit/<int:id>/', views.edit),
     path('delete/<int:id>/', views.delete),
     path('login', views.login_required(), name='login'),
-    path('error404',views.error404),
+    path('error404', views.error404),
 
 
 
