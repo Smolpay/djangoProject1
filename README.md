@@ -10,7 +10,7 @@ For work it is required:
 3) Open repository in your IDE.
 4) In the terminal being in the root folder(djangoProject1/) of the application, write the commands:
 
-a)"docker compose up" to run the container
+a)"docker compose up" to build the container
 
 b) you need to make migtations in DB with command:
 "docker-compose run web python manage.py makemigrations" to build migrations and
