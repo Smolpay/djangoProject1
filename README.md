@@ -1,7 +1,10 @@
-# djangoProject1
-PasswordManager
+# PasswordManager
 
-This application for saving your passwords for something in your teams For work it is required:
+
+This application for saving your passwords for something in your teams 
+
+For work it is required:
+
 1) Download Docker https://www.docker.com/get-started
 2) Clone the repository.
 3) Open repository in your IDE.
