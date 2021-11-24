@@ -1,9 +1,10 @@
 # djangoProject1
 PasswordManager
 This application for saving your passwords for something in your teams For work it is required:
-
-1) Clone the repository. 
-2) In the terminal being in the root folder of the application, write the commands:
+1) Download Docker https://www.docker.com/get-started
+2) Clone the repository.
+3) Open repository in your IDE.
+4) In the terminal being in the root folder(djangoProject1/) of the application, write the commands:
 
 a)"docker compose up" to run the container
 
